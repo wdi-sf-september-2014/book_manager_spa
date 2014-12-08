@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Product Manager Application</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+	<style>
+		.smaller {
+			width:600px;
+			margin-left:auto;
+			margin-right:auto;
+		}
+
+		.margin-top-40 {
+			margin-top:40px;
+		}
+
+		.bold {
+			font-weight:bold;
+		}
+
+		.margin-top-10 {
+			margin-top:10px;
+		}
+
+		.txt-center {
+			text-align:center;
+		}
+
+		.txt-right {
+			text-align:right;
+		}
+	</style>
+</head>
+
+<body>
+
+<div id="container" class="container">
+</div>
+
+<script type="x-handlebars-template" id="book-list-template">
+	<div class="margin-top-40">
+		<a href="#new" class="btn btn-success">Add New Book</a>
+	</div>
+	<!--One Book-->
+	<div class="row margin-top-40">
+		<div class="col-sm-2">
+			<img src="https://s3-us-west-2.amazonaws.com/sandboxapi/to_kill_a_mockingbird.jpg" class="img-responsive" />
+		</div>
+		<div class="col-sm-8">
+			<div class="bold">
+				Information about this book:
+			</div>
+			<div class="margin-top-10">
+				Arun's Adventures
+			</div>
+			<div>
+				Arun Sood
+			</div>
+			<div>
+				Released on: January 15, 2014
+			</div>
+			<div class="margin-top-10">
+				<a href="#edit/1" class="btn btn-default">View More</a>
+			</div>
+		</div>
+	</div>
+	<!--/One Book-->
+</script>
+
+<script type="x-handlebars-template" id="edit-book-template">
+	<div class="smaller margin-top-40">
+		<div>
+			<a href="#" class="btn btn-default">Back</a>
+		</div>
+		<div class="bold margin-top-10">
+			Title
+		</div>
+		<div class="margin-top-10">
+			<input type="text" class="form-control" id="edit-title" value="{{bookInfo.title}}" />
+		</div>
+		<div class="bold margin-top-10">
+			Author
+		</div>
+		<div class="margin-top-10">
+			<input type="text" class="form-control" id="edit-author" value="{{bookInfo.author}}" />
+		</div>
+		<div class="bold margin-top-10">
+			Release Date
+		</div>
+		<div class="margin-top-10">
+			<input type="text" class="form-control" id="edit-release" value="{{bookInfo.release_date}}" />
+		</div>
+		<div class="bold margin-top-10">
+			Image
+		</div>
+		<div class="margin-top-10">
+			<input type="text" class="form-control" id="edit-image" value="{{bookInfo.image}}" />
+		</div>
+		<div class="margin-top-10 txt-right">
+			<a class="btn btn-danger" id="delete-book" data-id="{{bookInfo.id}}">Delete Book</a>
+			<a class="btn btn-primary" id="submit-book-edits" data-id="{{bookInfo.id}}">Submit Edits</a>
+		</div>
+	</div>
+</script>
+
+<script type="x-handlebars-template" id="new-book-template">
+	<div class="smaller margin-top-40">
+		<div>
+			<a href="#" class="btn btn-default">Back</a>
+		</div>
+		<div class="bold margin-top-10">
+			Title
+		</div>
+		<div class="margin-top-10">
+			<input type="text" class="form-control" id="new-title" />
+		</div>
+		<div class="bold margin-top-10">
+			Author
+		</div>
+		<div class="margin-top-10">
+			<input type="text" class="form-control" id="new-author" />
+		</div>
+		<div class="bold margin-top-10">
+			Release Date
+		</div>
+		<div class="margin-top-10">
+			<input type="text" class="form-control" id="new-release" />
+		</div>
+		<div class="bold margin-top-10">
+			Image
+		</div>
+		<div class="margin-top-10">
+			<input type="text" class="form-control" id="new-image" />
+		</div>
+		<div class="margin-top-10 txt-right">
+			<a class="btn btn-primary" id="submit-book">Submit Book</a>
+		</div>
+	</div>
+</script>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="libraries/handlebars.js"></script>
+<script src="libraries/underscore.min.js"></script>
+<script src="libraries/backbone.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
+
+</body>
