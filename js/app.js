@@ -70,6 +70,90 @@ var EditBook = Backbone.View.extend({
 				that.$el.html(html);
 			}
 		});
+	},
+
+	events: {
+		"click .submit-book-edits":"editBook",
+		"click .delete-book":"deleteBook"
+	},
+
+	editBook: function(event) {
+		var that = this;
+
+		var book = new Book();
+
+		var bookInfo = {
+			id: event.target.id,
+			title: $("#edit-title").val(),
+			author: $("#edit-author").val(),
+			release_date: $("#edit-release").val(),
+			image: $("#edit-image").val()
+		};
+
+		book.save(bookInfo, {
+			success: function() {
+				router.navigate("", {
+					trigger: true
+				});
+
+				that.undelegateEvents();
+			}
+		});
+	},
+
+	deleteBook: function(event) {
+		var that = this;
+
+		var book = new Book({
+			id: event.target.id
+		});
+
+		book.destroy({
+			success: function() {
+				router.navigate("", {
+					trigger: true
+				});
+
+				that.undelegateEvents();
+			}
+		});
+	}
+});
+
+var NewBook = Backbone.View.extend({
+	el: "#container",
+
+	render: function() {
+		var html = newBookTemplate();
+		//$("#container").html(html);
+		this.$el.html(html);
+	},
+
+	events: {
+		"click #submit-book": "saveBook"
+	},
+
+	saveBook: function() {
+		var that = this;
+
+		var book = new Book();
+
+		var bookInfo = {
+			title: $("#new-title").val(),
+			author: $("#new-author").val(),
+			release_date: $("#new-release").val(),
+			image: $("#new-image").val()
+		};
+
+		book.save(bookInfo, {
+			success: function() {
+				router.navigate("", {
+					trigger: true
+				});
+
+				that.undelegateEvents();
+			}
+		});
 	}
 });
 
@@ -101,9 +185,8 @@ router.on("route:edit_book", function(id) {
 
 //Show new book form
 router.on("route:new_book", function() {
-	var html = newBookTemplate();
-
-	$("#container").html(html);
+	var newbook = new NewBook();
+	newbook.render();
 });
 
 //Start the history
